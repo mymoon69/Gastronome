@@ -3,7 +3,7 @@ import { Text, View, StyleSheet, Button, ScrollView } from "react-native";
 
 import Searchbar from "../../components/SearchInput";
 import Buttonlocation from "../../components/Buttonlocation";
-import Carousel from "../../components/Carousel";
+import Carousel from "../../components/ResCarousel";
 import { PLACES } from "../../data"
 
 const MainScreen = () => {
