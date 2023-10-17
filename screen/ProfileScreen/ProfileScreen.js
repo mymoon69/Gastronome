@@ -7,7 +7,7 @@ const Profile = () => {
 
             <View style={{ flexDirection: 'row', marginBottom: 25, marginTop: 25, }}>
                 <Image
-                    source={require("../assets/3135823.png")}
+                    source={require("../../assets/3135823.png")}
                     style={{ width: 80, height: 80, marginLeft: 20 }}
                 />
 

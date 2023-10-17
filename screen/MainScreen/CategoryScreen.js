@@ -8,14 +8,14 @@ const Categories = () => {
             <View style={{ flexDirection: 'row', }}>
                 <View style={styles.category}>
                     <Image
-                        source={require(".../assets/3135823.png")}
+                        source={require("../../assets/3135823.png")}
                         style={{ width: 80, height: 80, }}
                     />
                     <Text style={{ color: '#3F2305', fontSize: 18, marginTop: 5 }}>อาหารตามสั่ง</Text>
                 </View>
                 <View style={styles.category}>
                     <Image
-                        source={require(".../assets/3135823.png")}
+                        source={require("../../assets/3135823.png")}
                         style={{ width: 80, height: 80, }}
                     />
                     <Text style={{ color: '#3F2305', fontSize: 18, marginTop: 5 }}>อาหารตามสั่ง</Text>
@@ -24,14 +24,14 @@ const Categories = () => {
             <View style={{ flexDirection: 'row', }}>
                 <View style={styles.category}>
                     <Image
-                        source={require(".../assets/3135823.png")}
+                        source={require("../../assets/3135823.png")}
                         style={{ width: 80, height: 80, }}
                     />
                     <Text style={{ color: '#3F2305', fontSize: 18, marginTop: 5 }}>อาหารตามสั่ง</Text>
                 </View>
                 <View style={styles.category}>
                     <Image
-                        source={require(".../assets/3135823.png")}
+                        source={require("../../assets/3135823.png")}
                         style={{ width: 80, height: 80, }}
                     />
                     <Text style={{ color: '#3F2305', fontSize: 18, marginTop: 5 }}>อาหารตามสั่ง</Text>
