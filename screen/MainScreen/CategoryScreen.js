@@ -1,9 +1,7 @@
 import React, { Component } from "react";
-import { StyleSheet, Text, View, Button, Navbar, Pressable } from 'react-native';
-import { Input, Image } from "react-native-elements";
+import { StyleSheet,View, ScrollView, FlatList } from 'react-native';
 import firebase from "../../database/firebaseDB";
 import { ListItem, Avatar } from "react-native-elements";
-import { ScrollView } from "react-native-gesture-handler";
 
 class Categories extends Component {
     constructor() {
@@ -27,8 +25,8 @@ class Categories extends Component {
                 name,
             });
         });
-        console.log("all_data : ", all_data);
-        console.log("all_data : ", all_data[0].name);
+        // console.log("all_data : ", all_data);
+        // console.log("all_data : ", all_data[0].name);
         this.setState({
             Categories_list: all_data,
         });
@@ -50,13 +48,14 @@ class Categories extends Component {
 
     render() {
         return (
-            <View style={styles.container} numColumns={2}>
+            <View style={styles.container}>
+                <ScrollView>
                 {this.state.Categories_list.map((item, i) => {
-                    console.log("item", item);
-                    console.log(i);
-                    console.log(item.img);
+                    // console.log("item", item);
+                    // console.log(i);
+                    // console.log(item.img);
                     return (
-                        <ListItem key={i} containerStyle={{...styles.category, backgroundColor: item.color}}  >
+                        <ListItem key={i} containerStyle={{...styles.category, backgroundColor: item.color}}>
                              <ListItem.Content style={{ justifyContent: "center", alignItems: "center", backgroundColor: item.color}}>
                                  <Avatar source={{ uri: item.img }} style={styles.pic} />
                                  <ListItem.Title style={styles.txt}> {item.name} </ListItem.Title>
@@ -64,6 +63,8 @@ class Categories extends Component {
                         </ListItem>
                     );
                 })}
+                </ScrollView>
+                
             </View>
         );
     }
@@ -75,11 +76,18 @@ const styles = StyleSheet.create({
         flex: 1,
         // padding: 15,
         backgroundColor: "#F4EEEE",
-        alignItems: 'center',
-        justifyContent: 'center',
+        // alignItems: 'center',
+        // justifyContent: 'center',
+        // flexDirection: "row",
+        // flexWrap: "wrap"
+    },
+    scoll: {
+        // alignItems: "center",
+        // justifyContent: "center",
         flexDirection: "row",
         flexWrap: "wrap"
-    },
+    }
+    ,
     category: {
         height: 165,
         width: 165,

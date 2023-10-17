@@ -5,7 +5,7 @@ import MyNavigator from './navigations/MainNavigation';
 import Detail from './screen/MainScreen/DetailScreen'
 
 export default function App() {
-  return <Detail/>
+  return <MyNavigator/>
 }
 
 const styles = StyleSheet.create({
