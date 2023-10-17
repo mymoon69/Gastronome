@@ -4,7 +4,7 @@ import { Fontisto } from '@expo/vector-icons';
 
 const Buttonlocation = ({ onPress }) => {
     return (
-        <TouchableOpacity onPress={onPress}>
+        <TouchableOpacity onPress={onPress} style={{justifyContent: "center", alignItems: "center"}}>
             <View style={styles.button}>
                 <View style={styles.icon}>
                     <Fontisto name="shopping-store" size={24} color="black" />
@@ -18,10 +18,14 @@ const Buttonlocation = ({ onPress }) => {
 const styles = StyleSheet.create({
     button: {
         // flexDirection: "row",
-        borderRadius: 5,
-        paddingVertical: 20,
-        paddingHorizontal: 1,
+        // borderRadius: 5,
+        // paddingVertical: 20,
+        // paddingHorizontal: -10,
+        width: 360,
+        height: 77,
+        justifyContent: 'center',
         backgroundColor: 'white',
+        borderRadius: 20
     },
     icon:{
         flexDirection: "row",
