@@ -2,7 +2,7 @@ import React from "react";
 import { View, Text, StyleSheet, Image, TouchableOpacity } from "react-native";
 
 const RestaurantItem = ({list}) => {
-    console.log("list", list)
+    // console.log("list", list)
     return (
         <View style={styles.container}>
             <TouchableOpacity style={styles.cardContainer}>
@@ -17,7 +17,6 @@ const RestaurantItem = ({list}) => {
                             <Text style={{ fontSize: 15, fontWeight: 'bold', marginLeft: 10 }}>{list.name}</Text>
                             <Text style={{ fontSize: 13, color: 'gray', marginLeft: 10 }}>{list.category_name}</Text>
                         </View>
-                        <Text style={{ fontSize: 15, height: 30, width: 60, alignItems: 'center'}}>{list.review} รีวิว</Text>
                     </View>
                 </View>
             </TouchableOpacity>

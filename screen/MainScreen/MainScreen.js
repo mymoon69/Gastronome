@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Text, View, StyleSheet, Button, ScrollView } from "react-native";
 import firebase from "../../database/firebaseDB"
 import { ListItem } from "react-native-elements";
+import { useFonts, Kodchasan_400Regular } from '@expo-google-fonts/kodchasan';
 
 import Searchbar from "../../components/SearchInput";
 import Buttonlocation from "../../components/Buttonlocation";
@@ -60,7 +61,7 @@ class MainScreen extends Component {
                 <Searchbar />
                 <ScrollView>
                     <Buttonlocation />
-                    <Text style={styles.mainText} onPress={() => { this.props.navigation.navigate("Restaurant")}} >ร้านอาหารยอดนิยม ></Text>
+                    <Text style={styles.mainText} onPress={() => { this.props.navigation.navigate("Recommend")}} >ร้านอาหารยอดนิยม {'>'}</Text>
                     <ScrollView showsVerticalScrollIndicator={false} horizontal={true}>
                         {this.state.restaurant_list.map((item, i) => {
                             return (
@@ -68,7 +69,7 @@ class MainScreen extends Component {
                             )
                         })}
                     </ScrollView>
-                    <Text style={styles.mainText}>ร้านอาหารยอดนิยม > </Text>
+                    <Text style={styles.mainText} onPress={() => { this.props.navigation.navigate("Interest")}} >ร้านอาหารน่าสนใจ {'>'} </Text>
                     <ScrollView showsVerticalScrollIndicator={false} horizontal={true}>
                         {this.state.restaurant_list.map((item, i) => {
                             return (
@@ -76,7 +77,7 @@ class MainScreen extends Component {
                             )
                         })}
                     </ScrollView>
-                    <Text style={styles.mainText}>ร้านอาหารยอดนิยม > </Text>
+                    <Text style={styles.mainText} onPress={() => { this.props.navigation.navigate("New")}}>ร้านอาหารใหม่ {'>'} </Text>
                     <ScrollView showsVerticalScrollIndicator={false} horizontal={true}>
                         {this.state.restaurant_list.map((item, i) => {
                             return (
@@ -98,6 +99,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#F4EEEE',
         // alignItems: 'center',
         // justifyContent: 'center'
+        fontFamily: ''
     },
     locate: {
         width: 360,

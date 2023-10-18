@@ -9,7 +9,9 @@ import MainScreen from "../screen/MainScreen/MainScreen";
 import Categories from "../screen/MainScreen/CategoryScreen";
 import Favorite from "../screen/MainScreen/FavoritScreen";
 import Profile from "../screen/ProfileScreen/ProfileScreen";
-import Restaurant from "../screen/MainScreen/RecommendScreen"
+import Recommend from "../screen/RestaurantScreen/RecommendScreen"
+import Interest from "../screen/RestaurantScreen/InterestScreen"
+import New from "../screen/RestaurantScreen/NewScreen"
 
 const HomeNavigator = createNativeStackNavigator();
 const CategoryNavigator = createNativeStackNavigator();
@@ -33,10 +35,22 @@ function HomeNavigation() {
                     title: "หน้าหลัก"
                 }} />
             <HomeNavigator.Screen
-                name="Restaurant"
-                component={Restaurant}
+                name="Recommend"
+                component={Recommend}
                 options={{
                     title: "ร้านอาหารยอดนิยม"
+                }}/>
+            <HomeNavigator.Screen
+                name="Interest"
+                component={Interest}
+                options={{
+                    title: "ร้านอาหารน่าสนใจ"
+                }}/>
+            <HomeNavigator.Screen
+                name="New"
+                component={New}
+                options={{
+                    title: "ร้านอาหารใหม่"
                 }}/>
         </HomeNavigator.Navigator>
     );

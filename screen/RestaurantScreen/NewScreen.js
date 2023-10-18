@@ -2,16 +2,17 @@ import React, { Component } from "react";
 import { Text, View, StyleSheet, ScrollView } from "react-native";
 import firebase from "../../database/firebaseDB";
 
-import RestaurantItem from "../../components/RestaurantfavItem ";
+import Searchbar from "../../components/SearchInput";
+import RestaurantItem from "../../components/RestaurantItem";
 
-class FavoriteScreen extends Component {
+class NewScreen extends Component {
     constructor() {
         super();
 
-        this.favCollection = firebase.firestore().collection("Favorite");
+        this.newCollection = firebase.firestore().collection("Restaurant");
 
         this.state = {
-            favorite_list: [],
+            new_list: [],
         };
     }
 
@@ -35,12 +36,12 @@ class FavoriteScreen extends Component {
         });
 
         this.setState({
-            favorite_list: all_data,
+            new_list: all_data,
         });
     };
 
     componentDidMount() {
-        this.unsubscribe = this.favCollection.onSnapshot(this.getCollection);
+        this.unsubscribe = this.newCollection.onSnapshot(this.getCollection);
     }
 
     componentWillUnmount() {
@@ -54,8 +55,9 @@ class FavoriteScreen extends Component {
     render() {
         return (
             <View style={styles.container}>
+                <Searchbar />
                 <ScrollView showsVerticalScrollIndicator={false}>
-                    {this.state.favorite_list.map((item, i) => {
+                    {this.state.new_list.map((item, i) => {
                         return (
                             <RestaurantItem key={i} list={item} />
                         )
@@ -70,8 +72,9 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: '#F4EEEE',
-        marginTop: 10
+        // justifyContent: 'center',
+        // alignItems: 'center'
     }
 });
 
-export default FavoriteScreen;
+export default NewScreen;
