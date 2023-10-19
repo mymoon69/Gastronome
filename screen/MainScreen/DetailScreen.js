@@ -229,6 +229,7 @@ const styles = StyleSheet.create({
         height: 100,
         width: 320,
         marginLeft: 15,
+        textAlign: "center",
     },
     upImg: {
         backgroundColor: "white",

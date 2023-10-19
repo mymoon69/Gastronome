@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { StyleSheet,View, ScrollView, FlatList } from 'react-native';
+import { StyleSheet, View, ScrollView, FlatList, Image, Text } from 'react-native';
 import firebase from "../../database/firebaseDB";
 import { ListItem, Avatar } from "react-native-elements";
 
@@ -50,23 +50,51 @@ class Categories extends Component {
         return (
             <View style={styles.container}>
                 <ScrollView>
-                {this.state.Categories_list.map((item, i) => {
-                    // console.log("item", item);
-                    // console.log(i);
-                    // console.log(item.img);
-                    return (
-                        <ListItem key={i} containerStyle={{...styles.category, backgroundColor: item.color}}>
-                             <ListItem.Content style={{ justifyContent: "center", alignItems: "center", backgroundColor: item.color}}>
-                                 <Avatar source={{ uri: item.img }} style={styles.pic} />
-                                 <ListItem.Title style={styles.txt}> {item.name} </ListItem.Title>
-                             </ListItem.Content>
-                        </ListItem>
-                    );
-                })}
+                    <View style={{ flex: 1, flexDirection: "row", flexWrap: "wrap", justifyContent: "center" }}>
+                        {this.state.Categories_list.map((item, i) => {
+                            // console.log("item", item);
+                            // console.log(i);
+                            // console.log(item.img);
+                            return (
+                                <View key={i} style={{ ...styles.category, backgroundColor: item.color }}>
+                                    <View style={{ justifyContent: "center", alignItems: "center", backgroundColor: item.color }}>
+                                        <Image source={{ uri: item.img }} style={styles.pic} />
+                                        <Text style={styles.txt}> {item.name} </Text>
+                                    </View>
+                                </View>
+                                // <ListItem key={i} containerStyle={{ ...styles.category, backgroundColor: item.color }}>
+                                //     <ListItem.Content style={{ justifyContent: "center", alignItems: "center", backgroundColor: item.color }}>
+                                //         <Avatar source={{ uri: item.img }} style={styles.pic} />
+                                //         <ListItem.Title style={styles.txt}> {item.name} </ListItem.Title>
+                                //     </ListItem.Content>
+                                // </ListItem>
+                            );
+                        })}
+                    </View>
                 </ScrollView>
-                
+
             </View>
         );
+        // return (
+        //     <View style={styles.container}>
+        //         <ScrollView style={{flexDirection: 'row'}}>
+        //         {this.state.Categories_list.map((item, i) => {
+        //             // console.log("item", item);
+        //             // console.log(i);
+        //             // console.log(item.img);
+        //             return (
+        //                 <ListItem key={i} containerStyle={{...styles.category, backgroundColor: item.color}}>
+        //                      <ListItem.Content style={{ justifyContent: "center", alignItems: "center", backgroundColor: item.color}}>
+        //                          <Avatar source={{ uri: item.img }} style={styles.pic} />
+        //                          <ListItem.Title style={styles.txt}> {item.name} </ListItem.Title>
+        //                      </ListItem.Content>
+        //                 </ListItem>
+        //             );
+        //         })}
+        //         </ScrollView>
+
+        //     </View>
+        // );
     }
 
 };
@@ -76,8 +104,8 @@ const styles = StyleSheet.create({
         flex: 1,
         // padding: 15,
         backgroundColor: "#F4EEEE",
-        // alignItems: 'center',
-        // justifyContent: 'center',
+        alignItems: 'center',
+        justifyContent: 'center',
         // flexDirection: "row",
         // flexWrap: "wrap"
     },

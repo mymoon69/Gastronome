@@ -14,8 +14,8 @@ export default function App() {
     return null;
   }
 
-  return <DetailSceen/>
-  // <MyNavigator/>
+  return <MyNavigator/>
+  // <DetailSceen/>
   
 }
 
