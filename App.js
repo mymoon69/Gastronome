@@ -3,6 +3,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import { useFonts, Kodchasan_400Regular } from '@expo-google-fonts/kodchasan';
 
 import MyNavigator from './navigations/MainNavigation';
+import DetailSceen from './screen/MainScreen/DetailScreen';
 
 export default function App() {
   let [fontsLoaded] = useFonts({
@@ -13,7 +14,9 @@ export default function App() {
     return null;
   }
 
-  return <MyNavigator/>
+  return <DetailSceen/>
+  // <MyNavigator/>
+  
 }
 
 const styles = StyleSheet.create({
