@@ -131,7 +131,6 @@ class MainScreen extends Component {
             </View>
         );
     }
-
 }
 
 const styles = StyleSheet.create({

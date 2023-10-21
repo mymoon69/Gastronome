@@ -1,9 +1,8 @@
 import React, { Component } from "react";
-import { Text, View, StyleSheet, ScrollView } from "react-native";
+import { Text, View, StyleSheet, ScrollView, TouchableOpacity, Image } from "react-native";
 import firebase from "../../database/firebaseDB";
 
 import Searchbar from "../../components/SearchInput";
-import RestaurantItem from "../../components/RestaurantItem";
 
 class InterestScreen extends Component {
     constructor() {
@@ -49,7 +48,7 @@ class InterestScreen extends Component {
     }
 
     navigateToViewDetaile = (item) => {
-        this.props.navigation.navigate("Restaurant Detail", { key: item });
+        this.props.navigation.navigate("Detail", { key: item });
     };
 
     render() {
@@ -59,7 +58,24 @@ class InterestScreen extends Component {
                 <ScrollView showsVerticalScrollIndicator={false}>
                     {this.state.interest_list.map((item, i) => {
                         return (
-                            <RestaurantItem key={i} list={item} />
+                            <View style={styles.containercard}>
+                                <TouchableOpacity style={styles.cardContainer} onPress={() => this.navigateToViewDetaile(item.key)}>
+                                    <View style={styles.card}>
+                                        <View style={styles.Imagebox}>
+                                            <Image source={{ uri: item.picture }}
+                                                style={styles.Image}
+                                            />
+                                        </View>
+                                        <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginTop: 10 }}>
+                                            <View style={styles.maintext}>
+                                                <Text style={{ fontSize: 15, fontWeight: 'bold', marginLeft: 10 }}>{item.name}</Text>
+                                                <Text style={{ fontSize: 13, color: 'gray', marginLeft: 10 }}>{item.category_name}</Text>
+                                            </View>
+                                            <Text style={{ fontSize: 15, height: 30, width: 60, alignItems: 'center' }}>{item.review} รีวิว</Text>
+                                        </View>
+                                    </View>
+                                </TouchableOpacity>
+                            </View>
                         )
                     })}
                 </ScrollView>
@@ -72,8 +88,32 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: '#F4EEEE',
-        // justifyContent: 'center',
-        // alignItems: 'center'
+    },
+    containercard: {
+        flexDirection: 'column',
+        flexWrap: 'wrap'
+    },
+    card: {
+        width: 370,
+        height: 180,
+        backgroundColor: "#FFFFFF",
+        borderRadius: 20,
+    },
+    Imagebox: {
+        width: 370,
+        height: 120,
+        borderTopLeftRadius: 20,
+        borderTopRightRadius: 20,
+        overflow: 'hidden'
+    },
+    Image: {
+        width: 370,
+        height: 120,
+        resizeMode: 'cover'
+    },
+    cardContainer: {
+        marginLeft: 12,
+        marginBottom: 10
     }
 });
 
