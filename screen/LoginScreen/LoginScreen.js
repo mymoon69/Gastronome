@@ -20,17 +20,17 @@ const LoginScreen = () =>{
       this.navigation.navigate('Register')
     }
 
-    const navigation = useNavigation()
-    useEffect(() => {
+    // const navigation = useNavigation()
+    // useEffect(() => {
     
-        const unsubscribe = auth.onAuthStateChanged(user => {
-          if (user) {
-            navigation.replace("HomePage")
-          }
-        })
+    //     const unsubscribe = auth.onAuthStateChanged(user => {
+    //       if (user) {
+    //         navigation.replace("HomePage")
+    //       }
+    //     })
     
-        return unsubscribe
-      }, [])
+    //     return unsubscribe
+    //   }, [])
 
     const onLogin = () => {
           signInWithEmailAndPassword(getAuth(firebase),email, password)
