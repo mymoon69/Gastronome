@@ -1,0 +1,12 @@
+npm install @react-navigation/native
+npm install @react-navigation/native-stack
+npm install react-native-elements
+npm install firebase
+npm install @ant-design/icons-react-native
+npm install -g expo-cli
+
+
+
+npm install  //รันจาวา
+npx expo install  //รันที่อยู่นอกเหนือจาวา
+npx expo install @react-native-async-storage/async-storage
