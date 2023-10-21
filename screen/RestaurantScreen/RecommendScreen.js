@@ -59,7 +59,7 @@ class RecommendScreen extends Component {
                 <ScrollView showsVerticalScrollIndicator={false}>
                     {this.state.recommend_list.map((item, i) => {
                         return (
-                            <RestaurantItem key={i} list={item} />
+                            <RestaurantItem key={i} list={item}/>
                         )
                     })}
                 </ScrollView>

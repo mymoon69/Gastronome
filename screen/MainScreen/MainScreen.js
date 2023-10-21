@@ -65,7 +65,7 @@ class MainScreen extends Component {
                     <ScrollView showsVerticalScrollIndicator={false} horizontal={true}>
                         {this.state.restaurant_list.map((item, i) => {
                             return (
-                                <Carousel key={i} list={item} />
+                                <Carousel key={i} list={item}/>
                             )
                         })}
                     </ScrollView>

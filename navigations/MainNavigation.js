@@ -12,6 +12,7 @@ import Profile from "../screen/ProfileScreen/ProfileScreen";
 import Recommend from "../screen/RestaurantScreen/RecommendScreen"
 import Interest from "../screen/RestaurantScreen/InterestScreen"
 import New from "../screen/RestaurantScreen/NewScreen"
+import Detail from "../screen/MainScreen/DetailScreen"
 
 const HomeNavigator = createNativeStackNavigator();
 const CategoryNavigator = createNativeStackNavigator();
@@ -51,6 +52,12 @@ function HomeNavigation() {
                 component={New}
                 options={{
                     title: "ร้านอาหารใหม่"
+                }}/>
+            <HomeNavigator.Screen
+                name="Detail"
+                component={Detail}
+                options={{
+                    title: "Detail"
                 }}/>
         </HomeNavigator.Navigator>
     );
