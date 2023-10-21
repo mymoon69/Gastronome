@@ -1,7 +1,7 @@
 import React , { useState }  from 'react';
 import { StyleSheet, View, Alert ,TouchableHighlight, Text,TextInput} from "react-native";
 import { Image } from "react-native-elements";
-import { firebase } from "../../api/firebase";
+import { firebase } from "../../database/firebaseDB"
 import { AntDesign } from '@expo/vector-icons'; 
 import { Fontisto } from '@expo/vector-icons'; 
 import iconfood from '../../assets/iconfood.jpg';
@@ -15,6 +15,7 @@ const RegisterScreen = () =>{
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [confirmPassword, setConfirmPassword] = useState('')
+    const [profile] = useState('https://static.vecteezy.com/system/resources/previews/020/911/740/original/user-profile-icon-profile-avatar-user-icon-male-icon-face-icon-profile-icon-free-png.png')
 
     const goLogin = () => {
       navigation.navigate('Login')
@@ -29,10 +30,11 @@ const RegisterScreen = () =>{
           .then((response) => {
               const uid = response.user.uid
               const data = {
-                  id: uid,
+                  id: uid,//ระบบสุ่มไอดี
                   username,
                   email,
                   password,
+                  profile,
               };
               setDoc(doc(getFirestore(firebase), "user", uid), data)
                   .then(() => {

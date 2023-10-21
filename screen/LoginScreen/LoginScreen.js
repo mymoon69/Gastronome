@@ -1,5 +1,5 @@
-import React , { useState }  from 'react';
-import { StyleSheet, View, Alert ,TouchableHighlight, Text,TextInput} from "react-native";
+import React , { useState, useEffect }  from 'react';
+import { StyleSheet, View, TouchableHighlight, Text, TextInput, Alert} from "react-native";
 import { Image } from "react-native-elements";
 import { firebase } from "../../api/firebase";
 import { AntDesign } from '@expo/vector-icons'; 
@@ -7,7 +7,9 @@ import { Fontisto } from '@expo/vector-icons';
 import iconfood from '../../assets/iconfood.jpg';
 import {getAuth, signInWithEmailAndPassword} from "@firebase/auth";
 import {getFirestore} from "@firebase/firestore";
-import { doc, getDoc } from "firebase/firestore"; 
+import { doc, getDoc } from "firebase/firestore";
+import { useNavigation } from '@react-navigation/core'
+
 
 const LoginScreen = () =>{
 
@@ -15,22 +17,38 @@ const LoginScreen = () =>{
     const [password, setPassword] = useState('')
 
     const goRegister = () => {
-      navigation.navigate('Register')
+      this.navigation.navigate('Register')
     }
+
+    const navigation = useNavigation()
+    useEffect(() => {
+    
+        const unsubscribe = auth.onAuthStateChanged(user => {
+          if (user) {
+            navigation.replace("HomePage")
+          }
+        })
+    
+        return unsubscribe
+      }, [])
+
     const onLogin = () => {
           signInWithEmailAndPassword(getAuth(firebase),email, password)
           .then((response) => {
               const uid = response.user.uid
 
               getDoc(doc(getFirestore(firebase), "user", uid))
-                  .then(firestoreDocument => {
+                  .then((firestoreDocument) => {
                       if (!firestoreDocument.exists) {
                           alert("ไม่มีบัญชีนี้อยู่ในระบบ")
                           return;
                       }
-                      alert("ยินดีต้อนรับ")
+                      Alert.alert("ยินดีต้อนรับ");
+                      
+                      
                       const user = firestoreDocument.data()
-                        //navigation.navigate('Home', {user})
+                      
+                      // this.navigation.navigate('Main')
                   })
                   .catch(error => {
                       // alert(error)

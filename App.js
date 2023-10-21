@@ -5,6 +5,8 @@ import { useFonts, Kodchasan_400Regular } from '@expo-google-fonts/kodchasan';
 import MyNavigator from './navigations/MainNavigation';
 import DetailSceen from './screen/MainScreen/DetailScreen';
 import LoginScreen from './screen/LoginScreen/LoginScreen';
+import RegisterScreen from './screen/LoginScreen/RegisterScreen';
+import Profile from './screen/ProfileScreen/ProfileScreen';
 
 export default function App() {
   let [fontsLoaded] = useFonts({
@@ -15,8 +17,9 @@ export default function App() {
     return null;
   }
 
-  return <MyNavigator/>
-  // return <LoginScreen/>
+  // return <MyNavigator/>
+  // return <Profile/>
+  return <LoginScreen/>
   // <DetailSceen/>
   
 }

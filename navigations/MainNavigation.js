@@ -13,12 +13,39 @@ import Recommend from "../screen/RestaurantScreen/RecommendScreen"
 import Interest from "../screen/RestaurantScreen/InterestScreen"
 import New from "../screen/RestaurantScreen/NewScreen"
 import Detail from "../screen/MainScreen/DetailScreen"
+import LoginScreen from "../screen/LoginScreen/LoginScreen";
+import RegisterScreen from "../screen/LoginScreen/RegisterScreen";
 
 const HomeNavigator = createNativeStackNavigator();
 const CategoryNavigator = createNativeStackNavigator();
 const FavoriteNavigator = createNativeStackNavigator();
 const ProfileNavigator = createNativeStackNavigator();
 const BottomNavigator = createBottomTabNavigator();
+const LoginNavigator = createNativeStackNavigator();
+const RegisterNavigator = createNativeStackNavigator();
+
+function LoginNavigation() {
+    return (
+        <LoginNavigator.Navigator
+            initialRouteName="LoginScreen"
+            screenOptions={{
+                headerStyle: { backgroundColor: "#3F2305" },
+                headerTintColor: "white",
+                headerTitleAlign: "center"
+            }}>
+
+            <LoginNavigator.Screen
+                name="Login"
+                component={Login}
+            />
+            <RegisterNavigator.Screen
+                name="Register"
+                component={Register}
+            />
+
+        </LoginNavigator.Navigator>
+    );
+}
 
 function HomeNavigation() {
     return (
@@ -40,25 +67,25 @@ function HomeNavigation() {
                 component={Recommend}
                 options={{
                     title: "ร้านอาหารยอดนิยม"
-                }}/>
+                }} />
             <HomeNavigator.Screen
                 name="Interest"
                 component={Interest}
                 options={{
                     title: "ร้านอาหารน่าสนใจ"
-                }}/>
+                }} />
             <HomeNavigator.Screen
                 name="New"
                 component={New}
                 options={{
                     title: "ร้านอาหารใหม่"
-                }}/>
+                }} />
             <HomeNavigator.Screen
                 name="Detail"
                 component={Detail}
                 options={{
                     title: "Detail"
-                }}/>
+                }} />
         </HomeNavigator.Navigator>
     );
 }
@@ -160,14 +187,14 @@ export default function MyNavigator() {
                             return <MaterialIcons name="favorite-border" size={30} color="white" />
                         }
                     }} />
-                    <BottomNavigator.Screen
+                <BottomNavigator.Screen
                     name="ProfileScreen"
                     component={ProfileNavigation}
                     options={{
                         tabBarIcon: ({ color, size }) => {
                             return <FontAwesome5 name="user" size={30} color="white" />
                         }
-                    }}/>
+                    }} />
             </BottomNavigator.Navigator>
         </NavigationContainer >
     );
