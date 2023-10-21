@@ -1,33 +1,38 @@
 import React from 'react';
-import { StyleSheet, Text, View ,Image, Button, TouchableHighlight} from 'react-native';
+import { StyleSheet, Text, View, Image, Button, TouchableHighlight } from 'react-native';
 import EnjoyEatingImage from '../../assets/enjoyeating.jpg';
 import PeopleEat from '../../assets/peopleeat.jpg';
+// import { useNavigation } from '@react-navigation/native';
 
-const BeforeScreen = () => {
+const BeforeScreen = ({navigation}) => {
+  // const navigation = useNavigation();
+
   return (
-  <>
+
     <View style={styles.container}>
-      <Image  style={{marginTop: 30}} source={EnjoyEatingImage}/>
-      <Image style={{height: 200,width: 200,marginBottom: 50}} source={PeopleEat}/>
-      <TouchableHighlight style={styles.button_login} onPress={() => navigation.navigate('login')} underlayColor="#f4eeee">
+      <Image style={{ marginTop: 30 }} source={EnjoyEatingImage} />
+      <Image style={{ height: 200, width: 200, marginBottom: 50 }} source={PeopleEat} />
+
+      <TouchableHighlight style={styles.button_login} onPress={() => navigation.navigate('Login')} underlayColor="#f4eeee">
         <Text style={styles.buttonTextLogin}>เข้าสู่ระบบ</Text>
       </TouchableHighlight>
+
       <TouchableHighlight style={styles.button_register} onPress={() => navigation.navigate('register')} underlayColor="#3f2406">
         <Text style={styles.buttonTextRegister}>สมัครสมาชิก</Text>
-        </TouchableHighlight>
+      </TouchableHighlight>
+
     </View>
-  </>
   );
 }
 
 const styles = StyleSheet.create({
-  container:{
+  container: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor:'#f4eeee',
+    backgroundColor: '#f4eeee',
   },
-  button_login:{
+  button_login: {
     height: 50,
     width: 300,
     backgroundColor: '#3f2406',
@@ -36,7 +41,7 @@ const styles = StyleSheet.create({
     margin: 10,
     borderRadius: 5,
   },
-  button_register:{
+  button_register: {
     height: 50,
     width: 300,
     backgroundColor: '#f4eeee',

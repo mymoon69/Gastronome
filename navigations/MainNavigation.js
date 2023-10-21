@@ -15,6 +15,7 @@ import New from "../screen/RestaurantScreen/NewScreen"
 import Detail from "../screen/MainScreen/DetailScreen"
 import LoginScreen from "../screen/LoginScreen/LoginScreen";
 import RegisterScreen from "../screen/LoginScreen/RegisterScreen";
+import BeforeScreen from "../screen/LoginScreen/BeforeScreen";
 
 const HomeNavigator = createNativeStackNavigator();
 const CategoryNavigator = createNativeStackNavigator();
@@ -24,26 +25,40 @@ const BottomNavigator = createBottomTabNavigator();
 const LoginNavigator = createNativeStackNavigator();
 const RegisterNavigator = createNativeStackNavigator();
 
-function LoginNavigation() {
+export default function LoginNavigation() {
     return (
-        <LoginNavigator.Navigator
-            initialRouteName="LoginScreen"
-            screenOptions={{
-                headerStyle: { backgroundColor: "#3F2305" },
-                headerTintColor: "white",
-                headerTitleAlign: "center"
-            }}>
+        <NavigationContainer>
+            <LoginNavigator.Navigator
+                initialRouteName="Before"
+                screenOptions={{
+                    headerStyle: { backgroundColor: "#3F2305" },
+                    headerTintColor: "white",
+                    headerTitleAlign: "center"
+                }}>
+                    <LoginNavigator.Screen
+                    name="Before"
+                    component={BeforeScreen}
+                    options={{ headerShown: false }}
+                />
 
-            <LoginNavigator.Screen
-                name="Login"
-                component={Login}
-            />
-            <RegisterNavigator.Screen
-                name="Register"
-                component={Register}
-            />
+                <LoginNavigator.Screen
+                    name="Login"
+                    component={LoginScreen}
+                />
+                <RegisterNavigator.Screen
+                    name="Register"
+                    component={RegisterScreen}
+                />
+                <RegisterNavigator.Screen
+                    name="Main"
+                    component={MainScreen}
+                options={{
+                    title: "หน้าหลัก"
+                }}
+                />
 
-        </LoginNavigator.Navigator>
+            </LoginNavigator.Navigator>
+        </NavigationContainer>
     );
 }
 
@@ -148,7 +163,7 @@ function ProfileNavigation() {
     )
 }
 
-export default function MyNavigator() {
+function MyNavigator() {
     return (
         <NavigationContainer>
             <BottomNavigator.Navigator

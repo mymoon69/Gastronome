@@ -1,75 +1,62 @@
-import React , { useState, useEffect }  from 'react';
-import { StyleSheet, View, TouchableHighlight, Text, TextInput, Alert} from "react-native";
+import React, { useState, useEffect } from 'react';
+import { StyleSheet, View, TouchableHighlight, Text, TextInput, Alert } from "react-native";
 import { Image } from "react-native-elements";
 import { firebase } from "../../api/firebase";
-import { AntDesign } from '@expo/vector-icons'; 
-import { Fontisto } from '@expo/vector-icons'; 
+import { AntDesign } from '@expo/vector-icons';
+import { Fontisto } from '@expo/vector-icons';
 import iconfood from '../../assets/iconfood.jpg';
-import {getAuth, signInWithEmailAndPassword} from "@firebase/auth";
-import {getFirestore} from "@firebase/firestore";
+import { getAuth, signInWithEmailAndPassword } from "@firebase/auth";
+import { getFirestore } from "@firebase/firestore";
 import { doc, getDoc } from "firebase/firestore";
-import { useNavigation } from '@react-navigation/core'
+// import { useNavigation } from '@react-navigation/core'
 
 
-const LoginScreen = () =>{
+const LoginScreen = ({ navigation }) => {
 
-    const [email, setEmail] = useState('')
-    const [password, setPassword] = useState('')
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
 
-    const goRegister = () => {
-      this.navigation.navigate('Register')
-    }
+  // const navigation = useNavigation()
 
-    // const navigation = useNavigation()
-    // useEffect(() => {
-    
-    //     const unsubscribe = auth.onAuthStateChanged(user => {
-    //       if (user) {
-    //         navigation.replace("HomePage")
-    //       }
-    //     })
-    
-    //     return unsubscribe
-    //   }, [])
+  const goRegister = () => {
+    navigation.navigate('Register');
+  }
 
-    const onLogin = () => {
-          signInWithEmailAndPassword(getAuth(firebase),email, password)
-          .then((response) => {
-              const uid = response.user.uid
+  const onLogin = () => {
+    signInWithEmailAndPassword(getAuth(firebase), email, password)
+      .then((response) => {
+        const uid = response.user.uid
 
-              getDoc(doc(getFirestore(firebase), "user", uid))
-                  .then((firestoreDocument) => {
-                      if (!firestoreDocument.exists) {
-                          alert("ไม่มีบัญชีนี้อยู่ในระบบ")
-                          return;
-                      }
-                      Alert.alert("ยินดีต้อนรับ");
-                      
-                      
-                      const user = firestoreDocument.data()
-                      
-                      // this.navigation.navigate('Main')
-                  })
-                  .catch(error => {
-                      // alert(error)
-                      alert("dont has this email")
-                  });
+        getDoc(doc(getFirestore(firebase), "user", uid))
+          .then((firestoreDocument) => {
+            if (!firestoreDocument.exists) {
+              alert("ไม่มีบัญชีนี้อยู่ในระบบ")
+              return;
+            }
+            alert("ยินดีต้อนรับ");
+            const user = firestoreDocument.data()
+            navigation.navigate('Main')
           })
           .catch(error => {
-              // alert(error)
-              alert("dont has this email")
-          })
-    }
+            // alert(error)
+            alert("dont has this email")
+          });
+      })
+      .catch(error => {
+        // alert(error)
+        alert("dont has this email")
+      })
+  }
 
-    return (
+  return (
     <>
       <View style={styles.imageContainer}>
         <Image
           source={iconfood}
-          style={{ width: 200, height: 200}}
+          style={{ width: 200, height: 200 }}
           containerStyle={{ marginLeft: "auto", marginRight: "auto" }}
         />
-        <Text style={{color:'#3f2406',fontSize:30,fontWeight:600}}>เข้าสู่ระบบ</Text>
+        <Text style={{ color: '#3f2406', fontSize: 30, fontWeight: 600 }}>เข้าสู่ระบบ</Text>
       </View>
       <View style={styles.searchSection}>
         <Fontisto name="email" size={24} color="black" />
@@ -91,23 +78,23 @@ const LoginScreen = () =>{
       </View>
       <View style={styles.buttonContainer}>
         <TouchableHighlight style={styles.button_login} onPress={() => onLogin()}>
-            <Text style={styles.buttonTextLogin}>เข้าสู่ระบบ</Text>
+          <Text style={styles.buttonTextLogin}>เข้าสู่ระบบ</Text>
         </TouchableHighlight>
         <Text style={styles.footerText}>ยังไม่เป็นสมาชิกหรอ? <Text onPress={goRegister} style={styles.footerLink}>สมัครสมาชิก</Text></Text>
       </View>
     </>
-    );
-  }
+  );
+}
 
 const styles = StyleSheet.create({
-  buttonContainer:{
+  buttonContainer: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#f4eeee',
     //margin: 1,
   },
-  imageContainer:{
+  imageContainer: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
@@ -134,7 +121,7 @@ const styles = StyleSheet.create({
     //padding:10,
     //marginTop:20,
   },
-  button_login:{
+  button_login: {
     height: 50,
     width: 300,
     backgroundColor: '#3f2406',

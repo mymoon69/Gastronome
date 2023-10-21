@@ -9,7 +9,7 @@ import {getAuth, createUserWithEmailAndPassword} from "@firebase/auth";
 import {getFirestore} from "@firebase/firestore";
 import { doc, setDoc } from "firebase/firestore"; 
 
-const RegisterScreen = () =>{
+const RegisterScreen = ({navigation}) =>{
 
     const [username, setUsername] = useState('')
     const [email, setEmail] = useState('')

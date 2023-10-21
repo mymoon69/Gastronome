@@ -7,20 +7,22 @@ import DetailSceen from './screen/MainScreen/DetailScreen';
 import LoginScreen from './screen/LoginScreen/LoginScreen';
 import RegisterScreen from './screen/LoginScreen/RegisterScreen';
 import Profile from './screen/ProfileScreen/ProfileScreen';
+import BeforeScreen from './screen/LoginScreen/BeforeScreen';
+import LoginNavigation from './navigations/MainNavigation';
 
 export default function App() {
-  let [fontsLoaded] = useFonts({
-    Kodchasan_400Regular
-  });
+  // let [fontsLoaded] = useFonts({
+  //   Kodchasan_400Regular
+  // });
 
-  if (!fontsLoaded) {
-    return null;
-  }
+  // if (!fontsLoaded) {
+  //   return null;
+  // }
 
   // return <MyNavigator/>
   // return <Profile/>
-  return <LoginScreen/>
-  // <DetailSceen/>
+  return <LoginNavigation/>
+  // return <BeforeScreen/>
   
 }
 
