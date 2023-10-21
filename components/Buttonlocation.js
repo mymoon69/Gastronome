@@ -17,10 +17,6 @@ const Buttonlocation = ({ onPress }) => {
 
 const styles = StyleSheet.create({
     button: {
-        // flexDirection: "row",
-        // borderRadius: 5,
-        // paddingVertical: 20,
-        // paddingHorizontal: -10,
         width: 360,
         height: 77,
         justifyContent: 'center',

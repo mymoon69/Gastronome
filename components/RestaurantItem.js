@@ -1,8 +1,7 @@
 import React from "react";
-import { View, Text, StyleSheet, Image, TouchableOpacity } from "react-native";
+import { Alert ,View, Text, StyleSheet, Image, TouchableOpacity } from "react-native";
 
-const RestaurantItem = ({list}) => {
-    console.log("list", list)
+const RestaurantItem = ({ list }) => {
     return (
         <View style={styles.container}>
             <TouchableOpacity style={styles.cardContainer}>
@@ -12,12 +11,12 @@ const RestaurantItem = ({list}) => {
                             style={styles.Image}
                         />
                     </View>
-                    <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems:'center', marginTop: 10}}>
+                    <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginTop: 10 }}>
                         <View style={styles.maintext}>
                             <Text style={{ fontSize: 15, fontWeight: 'bold', marginLeft: 10 }}>{list.name}</Text>
                             <Text style={{ fontSize: 13, color: 'gray', marginLeft: 10 }}>{list.category_name}</Text>
                         </View>
-                        <Text style={{ fontSize: 15, height: 30, width: 60, alignItems: 'center'}}>{list.review} รีวิว</Text>
+                        <Text style={{ fontSize: 15, height: 30, width: 60, alignItems: 'center' }}>{list.review} รีวิว</Text>
                     </View>
                 </View>
             </TouchableOpacity>

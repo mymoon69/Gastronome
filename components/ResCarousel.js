@@ -1,15 +1,10 @@
 import React from "react";
 import { SafeAreaView, FlatList, Text, View, Image, StatusBar, StyleSheet, TouchableOpacity } from "react-native";
 
-const Carousel = ({ list }) => {
-    
-    navigateToViewDetaile = (item) => {
-        this.props.navigation.navigate("Restaurant Detail", { key: item });
-    };
-    // console.log("list", list)
+const Carousel = ({ list, navigation }) => {
     return (
-        <TouchableOpacity style={{ marginLeft: 10, marginRight: 10 }}>
-            <View style={styles.card} >
+        <TouchableOpacity style={{ marginLeft: 10, marginRight: 10 }} >
+            <View style={styles.card}>
                 <View style={styles.imageBox}>
                     <Image source={{ uri: list.picture }} style={styles.image} />
 

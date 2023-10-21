@@ -2,7 +2,6 @@ import React from "react";
 import { View, Text, StyleSheet, Image, TouchableOpacity } from "react-native";
 
 const RestaurantItem = ({list}) => {
-    // console.log("list", list)
     return (
         <View style={styles.container}>
             <TouchableOpacity style={styles.cardContainer}>

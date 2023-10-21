@@ -25,12 +25,9 @@ class Categories extends Component {
                 name,
             });
         });
-        // console.log("all_data : ", all_data);
-        // console.log("all_data : ", all_data[0].name);
         this.setState({
             Categories_list: all_data,
         });
-        // console.log(this.state.Categories_list);
     };
 
     componentDidMount() {
@@ -41,20 +38,12 @@ class Categories extends Component {
         this.unsubscribe();
     }
 
-    // navigateToViewStudent = (item) => {
-    //     // Navigate to the "ViewStudent" screen
-    //     this.props.navigation.navigate("Student Info", { key: item });
-    // };
-
     render() {
         return (
             <View style={styles.container}>
                 <ScrollView>
                     <View style={{ flex: 1, flexDirection: "row", flexWrap: "wrap", justifyContent: "center" }}>
                         {this.state.Categories_list.map((item, i) => {
-                            // console.log("item", item);
-                            // console.log(i);
-                            // console.log(item.img);
                             return (
                                 <View key={i} style={{ ...styles.category, backgroundColor: item.color }}>
                                     <View style={{ justifyContent: "center", alignItems: "center", backgroundColor: item.color }}>
@@ -62,12 +51,6 @@ class Categories extends Component {
                                         <Text style={styles.txt}> {item.name} </Text>
                                     </View>
                                 </View>
-                                // <ListItem key={i} containerStyle={{ ...styles.category, backgroundColor: item.color }}>
-                                //     <ListItem.Content style={{ justifyContent: "center", alignItems: "center", backgroundColor: item.color }}>
-                                //         <Avatar source={{ uri: item.img }} style={styles.pic} />
-                                //         <ListItem.Title style={styles.txt}> {item.name} </ListItem.Title>
-                                //     </ListItem.Content>
-                                // </ListItem>
                             );
                         })}
                     </View>
@@ -75,26 +58,6 @@ class Categories extends Component {
 
             </View>
         );
-        // return (
-        //     <View style={styles.container}>
-        //         <ScrollView style={{flexDirection: 'row'}}>
-        //         {this.state.Categories_list.map((item, i) => {
-        //             // console.log("item", item);
-        //             // console.log(i);
-        //             // console.log(item.img);
-        //             return (
-        //                 <ListItem key={i} containerStyle={{...styles.category, backgroundColor: item.color}}>
-        //                      <ListItem.Content style={{ justifyContent: "center", alignItems: "center", backgroundColor: item.color}}>
-        //                          <Avatar source={{ uri: item.img }} style={styles.pic} />
-        //                          <ListItem.Title style={styles.txt}> {item.name} </ListItem.Title>
-        //                      </ListItem.Content>
-        //                 </ListItem>
-        //             );
-        //         })}
-        //         </ScrollView>
-
-        //     </View>
-        // );
     }
 
 };

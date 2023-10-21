@@ -17,7 +17,6 @@ const Searchbar = () => {
 
 const styles = StyleSheet.create({
     container: {
-        // flexDirection: 'row',
         paddingHorizontal: 30,
         paddingTop: 20,
         paddingBottom: 20
