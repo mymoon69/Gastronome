@@ -8,7 +8,7 @@ class NewScreen extends Component {
     constructor() {
         super();
 
-        this.newCollection = firebase.firestore().collection("Restaurant");
+        this.newCollection = firebase.firestore().collection("Restaurant").orderBy("id", "desc");
 
         this.state = {
             new_list: [],
@@ -58,7 +58,7 @@ class NewScreen extends Component {
                 <ScrollView showsVerticalScrollIndicator={false}>
                     {this.state.new_list.map((item, i) => {
                         return (
-                            <View style={styles.containercard}>
+                            <View style={styles.containercard} key={i}>
                                 <TouchableOpacity style={styles.cardContainer} onPress={() => this.navigateToViewDetaile(item.key)}>
                                     <View style={styles.card}>
                                         <View style={styles.Imagebox}>

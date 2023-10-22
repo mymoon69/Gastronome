@@ -8,7 +8,7 @@ class RecommendScreen extends Component {
     constructor() {
         super();
 
-        this.recCollection = firebase.firestore().collection("Restaurant");
+        this.recCollection = firebase.firestore().collection("Restaurant").orderBy("review", "desc");
 
         this.state = {
             recommend_list: [],
@@ -58,7 +58,7 @@ class RecommendScreen extends Component {
                 <ScrollView showsVerticalScrollIndicator={false}>
                     {this.state.recommend_list.map((item, i) => {
                         return (
-                            <View style={styles.containercard}>
+                            <View style={styles.containercard} key={i}>
                                 <TouchableOpacity style={styles.cardContainer} onPress={() => this.navigateToViewDetaile(item.key)}>
                                     <View style={styles.card}>
                                         <View style={styles.Imagebox}>

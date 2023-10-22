@@ -83,7 +83,7 @@ class MainScreen extends Component {
                             )
                         })}
                     </ScrollView>
-                    <Text style={styles.mainText} onPress={() => { this.props.navigation.navigate("Interest") }} >ร้านอาหารน่าสนใจ {'>'} </Text>
+                    <Text style={styles.mainText} onPress={() => { this.props.navigation.navigate("Interest") }} >ร้านอาหารเก่า {'>'} </Text>
                     <ScrollView showsVerticalScrollIndicator={false} horizontal={true}>
                         {this.state.restaurant_list.map((item, i) => {
                             return (

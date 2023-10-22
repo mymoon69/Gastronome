@@ -8,7 +8,7 @@ class InterestScreen extends Component {
     constructor() {
         super();
 
-        this.inCollection = firebase.firestore().collection("Restaurant");
+        this.inCollection = firebase.firestore().collection("Restaurant").orderBy("id", "asc");
 
         this.state = {
             interest_list: [],
@@ -58,7 +58,7 @@ class InterestScreen extends Component {
                 <ScrollView showsVerticalScrollIndicator={false}>
                     {this.state.interest_list.map((item, i) => {
                         return (
-                            <View style={styles.containercard}>
+                            <View style={styles.containercard} key={i}>
                                 <TouchableOpacity style={styles.cardContainer} onPress={() => this.navigateToViewDetaile(item.key)}>
                                     <View style={styles.card}>
                                         <View style={styles.Imagebox}>
