@@ -16,6 +16,9 @@ import Detail from "../screen/MainScreen/DetailScreen"
 import LoginScreen from "../screen/LoginScreen/LoginScreen";
 import RegisterScreen from "../screen/LoginScreen/RegisterScreen";
 import BeforeScreen from "../screen/LoginScreen/BeforeScreen";
+import ReviewHistoryScreen from "../screen/ProfileScreen/ReviewHisScreen"
+import EditProfileScreen from "../screen/ProfileScreen/EditProfileScreen"
+import ChangPassword from "../screen/ProfileScreen/ChangePasswordScreen"
 
 const HomeNavigator = createNativeStackNavigator();
 const CategoryNavigator = createNativeStackNavigator();
@@ -23,7 +26,6 @@ const FavoriteNavigator = createNativeStackNavigator();
 const ProfileNavigator = createNativeStackNavigator();
 const BottomNavigator = createBottomTabNavigator();
 const LoginNavigator = createNativeStackNavigator();
-const RegisterNavigator = createNativeStackNavigator();
 
 function LoginNavigation() {
     return (
@@ -45,17 +47,16 @@ function LoginNavigation() {
                 <LoginNavigator.Screen
                     name="Login"
                     component={LoginScreen}
+                    options={{ headerShown: false }}
                 />
                 <LoginNavigator.Screen
                     name="Register"
                     component={RegisterScreen}
+                    options={{ headerShown: false }}
                 />
                 <LoginNavigator.Screen
                     name="Home"
                     component={BottomNavigation}
-                // options={{
-                //     title: "หน้าหลัก"
-                // }}
                 />
             </LoginNavigator.Navigator>
         </NavigationContainer>
@@ -159,6 +160,28 @@ function ProfileNavigation() {
                 options={{
                     title: "ฉัน"
                 }} />
+
+            <ProfileNavigator.Screen
+                name="History"
+                component={ReviewHistoryScreen}
+                options={{
+                    title: "ประวัติการรีวิว"
+                }} />
+
+            <ProfileNavigator.Screen
+                name="Edit"
+                component={EditProfileScreen}
+                options={{
+                    title: "แก้ไขข้อมูลส่วนตัว"
+                }} />
+
+            <ProfileNavigator.Screen
+                name="Password"
+                component={ChangPassword}
+                options={{
+                    title: "แก้ไขรหัสผ่าน"
+                }} />
+
         </ProfileNavigator.Navigator>
     )
 }
@@ -176,7 +199,6 @@ function BottomNavigation() {
                 name="FirstScreen"
                 component={HomeNavigation}
                 options={{
-                    // title: "หน้าหลัก",
                     tabBarIcon: ({ color, size }) => {
                         return <AntDesign name="home" size={30} color="white" />
                     }
@@ -186,7 +208,6 @@ function BottomNavigation() {
                 name="CategoryScreen"
                 component={CategoryNavigation}
                 options={{
-                    // title: "หมวดหมู่",
                     tabBarIcon: ({ color, size }) => {
                         return <Ionicons name="grid-outline" size={30} color="white" />
                     }
@@ -196,7 +217,6 @@ function BottomNavigation() {
                 name="FanoriteScreen"
                 component={FavoriteNavigation}
                 options={{
-                    // title: "ชื่นชอบ",
                     tabBarIcon: ({ color, size }) => {
                         return <MaterialIcons name="favorite-border" size={30} color="white" />
                     }

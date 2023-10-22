@@ -1,7 +1,7 @@
 import React, { Component, useState } from "react";
 import { StyleSheet, Text, View, Button, Image, Navbar, Pressable } from 'react-native';
 import { Input, CheckBox } from "react-native-elements";
-import { RadioButton } from 'react-native-paper';
+// import { RadioButton } from 'react-native-paper';
 
 export default function EditMe() {
 
@@ -29,10 +29,10 @@ export default function EditMe() {
         <View style={styles.container}>
 
             <View style={{ alignItems: 'center', marginBottom: 25, marginTop: 25, }}>
-                <Image
+                {/* <Image
                     source={require("../assets/3135823.png")}
                     style={{ width: 80, height: 80, marginLeft: 20 }}
-                />
+                /> */}
                 <Pressable style={{ marginTop: 25, marginLeft: 20, }} >
                     {/* ใส่ onPress={onPress} ใน Pressable*/}
                     <Text style={{ color: "#176B87", fontSize: 16, }}>เปลี่ยนรูปโปรไฟล์</Text>

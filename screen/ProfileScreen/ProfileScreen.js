@@ -58,26 +58,26 @@ const Profile = ({ navigation }) => {
 
             </View>
 
-            <Pressable style={styles.aboutMe} onPress={() => navigation.navigate('Main')}>
-    {/* ใส่ onPress={onPress} ใน Pressable*/}
-    <Text style={{ marginLeft: 25 }}>ประวัติการรีวิว</Text>
-    <Text style={{ marginLeft: 185 }}> {'>'} </Text>
-</Pressable>
+            <Pressable style={styles.aboutMe} onPress={() => navigation.navigate('History')}>
+                {/* ใส่ onPress={onPress} ใน Pressable*/}
+                <Text style={{ marginLeft: 25 }}>ประวัติการรีวิว</Text>
+                <Text style={{ marginLeft: 185 }}> {'>'} </Text>
+            </Pressable>
 
-            <Pressable style={styles.aboutMe} >
+            <Pressable style={styles.aboutMe} onPress={() => navigation.navigate('Edit')}>
                 {/* ใส่ onPress={onPress} ใน Pressable*/}
                 <Text style={{ marginLeft: 25, }}>แก้ไขข้อมูลส่วนตัว</Text>
                 <Text style={{ marginLeft: 165, }}> {'>'} </Text>
             </Pressable>
 
-            <Pressable style={styles.aboutMe} >
+            <Pressable style={styles.aboutMe} onPress={() => navigation.navigate('Password')}>
                 {/* ใส่ onPress={onPress} ใน Pressable*/}
                 <Text style={{ marginLeft: 25, }}>เปลี่ยนรหัสผ่าน</Text>
                 <Text style={{ marginLeft: 185, }}> {'>'} </Text>
             </Pressable>
 
 
-            <Pressable style={styles.buttonLogout} >
+            <Pressable style={styles.buttonLogout} onPress={() => navigation.navigate('Login')}>
                 {/* ใส่ onPress={onPress} ใน Pressable*/}
                 <Text style={{ color: "red", }}>ออกจากระบบ</Text>
             </Pressable>
