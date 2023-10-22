@@ -65,7 +65,7 @@ class MainScreen extends Component {
                     <ScrollView showsVerticalScrollIndicator={false} horizontal={true}>
                         {this.state.restaurant_list.map((item, i) => {
                             return (
-                                <TouchableOpacity style={{ marginLeft: 10, marginRight: 10 }} onPress={() => this.navigateToViewDetaile(item.key)}>
+                                <TouchableOpacity style={{ marginLeft: 10, marginRight: 10 }} key={i} onPress={() => this.navigateToViewDetaile(item.key)}>
                                     <View style={styles.card}>
                                         <View style={styles.imageBox}>
                                             <Image source={{ uri: item.picture }} style={styles.image} />
@@ -87,7 +87,7 @@ class MainScreen extends Component {
                     <ScrollView showsVerticalScrollIndicator={false} horizontal={true}>
                         {this.state.restaurant_list.map((item, i) => {
                             return (
-                                <TouchableOpacity style={{ marginLeft: 10, marginRight: 10 }} onPress={() => this.navigateToViewDetaile(item.key)}>
+                                <TouchableOpacity style={{ marginLeft: 10, marginRight: 10 }} key={i} onPress={() => this.navigateToViewDetaile(item.key)}>
                                     <View style={styles.card}>
                                         <View style={styles.imageBox}>
                                             <Image source={{ uri: item.picture }} style={styles.image} />
@@ -109,7 +109,7 @@ class MainScreen extends Component {
                     <ScrollView showsVerticalScrollIndicator={false} horizontal={true}>
                         {this.state.restaurant_list.map((item, i) => {
                             return (
-                                <TouchableOpacity style={{ marginLeft: 10, marginRight: 10 }} onPress={() => this.navigateToViewDetaile(item.key)}>
+                                <TouchableOpacity style={{ marginLeft: 10, marginRight: 10 }} key={i} onPress={() => this.navigateToViewDetaile(item.key)}>
                                     <View style={styles.card}>
                                         <View style={styles.imageBox}>
                                             <Image source={{ uri: item.picture }} style={styles.image} />

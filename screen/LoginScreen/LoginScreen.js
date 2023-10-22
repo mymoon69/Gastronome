@@ -35,7 +35,7 @@ const LoginScreen = ({ navigation }) => {
             }
             alert("ยินดีต้อนรับ");
             const user = firestoreDocument.data()
-            navigation.navigate('Main')
+            navigation.navigate('Home')
           })
           .catch(error => {
             // alert(error)

@@ -17,7 +17,7 @@ const BeforeScreen = ({navigation}) => {
         <Text style={styles.buttonTextLogin}>เข้าสู่ระบบ</Text>
       </TouchableHighlight>
 
-      <TouchableHighlight style={styles.button_register} onPress={() => navigation.navigate('register')} underlayColor="#3f2406">
+      <TouchableHighlight style={styles.button_register} onPress={() => navigation.navigate('Register')} underlayColor="#3f2406">
         <Text style={styles.buttonTextRegister}>สมัครสมาชิก</Text>
       </TouchableHighlight>
 

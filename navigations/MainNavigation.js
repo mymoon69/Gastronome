@@ -25,7 +25,7 @@ const BottomNavigator = createBottomTabNavigator();
 const LoginNavigator = createNativeStackNavigator();
 const RegisterNavigator = createNativeStackNavigator();
 
-export default function LoginNavigation() {
+function LoginNavigation() {
     return (
         <NavigationContainer>
             <LoginNavigator.Navigator
@@ -33,30 +33,30 @@ export default function LoginNavigation() {
                 screenOptions={{
                     headerStyle: { backgroundColor: "#3F2305" },
                     headerTintColor: "white",
-                    headerTitleAlign: "center"
+                    headerTitleAlign: "center",
+                    headerShown: false,
+                    tabBarShowLabel: false
                 }}>
-                    <LoginNavigator.Screen
+                <LoginNavigator.Screen
                     name="Before"
                     component={BeforeScreen}
                     options={{ headerShown: false }}
                 />
-
                 <LoginNavigator.Screen
                     name="Login"
                     component={LoginScreen}
                 />
-                <RegisterNavigator.Screen
+                <LoginNavigator.Screen
                     name="Register"
                     component={RegisterScreen}
                 />
-                <RegisterNavigator.Screen
-                    name="Main"
-                    component={MainScreen}
-                options={{
-                    title: "หน้าหลัก"
-                }}
+                <LoginNavigator.Screen
+                    name="Home"
+                    component={BottomNavigation}
+                // options={{
+                //     title: "หน้าหลัก"
+                // }}
                 />
-
             </LoginNavigator.Navigator>
         </NavigationContainer>
     );
@@ -163,54 +163,58 @@ function ProfileNavigation() {
     )
 }
 
-function MyNavigator() {
+function BottomNavigation() {
     return (
-        <NavigationContainer>
-            <BottomNavigator.Navigator
-                screenOptions={{
-                    tabBarActiveTintColor: "darkblue",
-                    tabBarStyle: { backgroundColor: "#3F2305" },
-                    headerShown: false,
-                    tabBarShowLabel: false
-                }}>
-                <BottomNavigator.Screen
-                    name="FirstScreen"
-                    component={HomeNavigation}
-                    options={{
-                        // title: "หน้าหลัก",
-                        tabBarIcon: ({ color, size }) => {
-                            return <AntDesign name="home" size={30} color="white" />
-                        }
-                    }}
-                />
-                <BottomNavigator.Screen
-                    name="CategoryScreen"
-                    component={CategoryNavigation}
-                    options={{
-                        // title: "หมวดหมู่",
-                        tabBarIcon: ({ color, size }) => {
-                            return <Ionicons name="grid-outline" size={30} color="white" />
-                        }
-                    }}
-                />
-                <BottomNavigator.Screen
-                    name="FanoriteScreen"
-                    component={FavoriteNavigation}
-                    options={{
-                        // title: "ชื่นชอบ",
-                        tabBarIcon: ({ color, size }) => {
-                            return <MaterialIcons name="favorite-border" size={30} color="white" />
-                        }
-                    }} />
-                <BottomNavigator.Screen
-                    name="ProfileScreen"
-                    component={ProfileNavigation}
-                    options={{
-                        tabBarIcon: ({ color, size }) => {
-                            return <FontAwesome5 name="user" size={30} color="white" />
-                        }
-                    }} />
-            </BottomNavigator.Navigator>
-        </NavigationContainer >
+        <BottomNavigator.Navigator
+            screenOptions={{
+                tabBarActiveTintColor: "darkblue",
+                tabBarStyle: { backgroundColor: "#3F2305" },
+                headerShown: false,
+                tabBarShowLabel: false
+            }}>
+            <BottomNavigator.Screen
+                name="FirstScreen"
+                component={HomeNavigation}
+                options={{
+                    // title: "หน้าหลัก",
+                    tabBarIcon: ({ color, size }) => {
+                        return <AntDesign name="home" size={30} color="white" />
+                    }
+                }}
+            />
+            <BottomNavigator.Screen
+                name="CategoryScreen"
+                component={CategoryNavigation}
+                options={{
+                    // title: "หมวดหมู่",
+                    tabBarIcon: ({ color, size }) => {
+                        return <Ionicons name="grid-outline" size={30} color="white" />
+                    }
+                }}
+            />
+            <BottomNavigator.Screen
+                name="FanoriteScreen"
+                component={FavoriteNavigation}
+                options={{
+                    // title: "ชื่นชอบ",
+                    tabBarIcon: ({ color, size }) => {
+                        return <MaterialIcons name="favorite-border" size={30} color="white" />
+                    }
+                }} />
+            <BottomNavigator.Screen
+                name="ProfileScreen"
+                component={ProfileNavigation}
+                options={{
+                    tabBarIcon: ({ color, size }) => {
+                        return <FontAwesome5 name="user" size={30} color="white" />
+                    }
+                }} />
+        </BottomNavigator.Navigator>
+    );
+}
+
+export default function MainNavigatoion() {
+    return (
+        <LoginNavigation />
     );
 }
