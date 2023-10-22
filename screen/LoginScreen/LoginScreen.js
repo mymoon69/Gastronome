@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { StyleSheet, View, TouchableHighlight, Text, TextInput, Alert } from "react-native";
 import { Image } from "react-native-elements";
-import { firebase } from "../../api/firebase";
+import { firebase } from "../../database/firebaseDB"
 import { AntDesign } from '@expo/vector-icons';
 import { Fontisto } from '@expo/vector-icons';
 import iconfood from '../../assets/iconfood.jpg';
