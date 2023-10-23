@@ -6,20 +6,24 @@ import { useFonts, Kodchasan_400Regular } from '@expo-google-fonts/kodchasan';
 
 import Searchbar from "../../components/SearchInput";
 import Buttonlocation from "../../components/Buttonlocation";
-// import Carousel from "../../components/ResCarousel";
+import Carousel from "../../components/ResCarousel";
 
 class MainScreen extends Component {
     constructor() {
         super();
 
-        this.resCollection = firebase.firestore().collection("Restaurant");
+        this.ReccomendCollection = firebase.firestore().collection("Restaurant").orderBy("review", "desc");
+        this.InterestCollection = firebase.firestore().collection("Restaurant").orderBy("id", "asc");
+        this.NewCollection = firebase.firestore().collection("Restaurant").orderBy("id", "desc");
 
         this.state = {
-            restaurant_list: [],
+            Reccomend_list: [],
+            Interest_list: [],
+            New_list: []
         };
     }
 
-    getCollection = (querySnapshot) => {
+    getCollection = (querySnapshot, section) => {
         const all_data = [];
         querySnapshot.forEach((res) => {
             const { id, name, category_name, review, detail, category_id, picture, rating, telephone } = res.data();
@@ -36,19 +40,31 @@ class MainScreen extends Component {
                 rating,
                 telephone
             });
-        });
 
-        this.setState({
-            restaurant_list: all_data,
+            this.setState({
+                [section]: all_data
+            });
         });
     };
 
     componentDidMount() {
-        this.unsubscribe = this.resCollection.onSnapshot(this.getCollection);
+        this.unsubscribeReccomend = this.ReccomendCollection.onSnapshot(querySnapshot => {
+            this.getCollection(querySnapshot, "Reccomend_list");
+        });
+
+        this.unsubscribeInterest = this.InterestCollection.onSnapshot(querySnapshot => {
+            this.getCollection(querySnapshot, "Interest_list");
+        });
+
+        this.unsubscribeNew = this.NewCollection.onSnapshot(querySnapshot => {
+            this.getCollection(querySnapshot, "New_list");
+        });
     }
 
     componentWillUnmount() {
-        this.unsubscribe();
+        this.unsubscribeReccomend();
+        this.unsubscribeInterest();
+        this.unsubscribeNew();
     }
 
     navigateToViewDetaile = (item) => {
@@ -63,7 +79,7 @@ class MainScreen extends Component {
                     <Buttonlocation />
                     <Text style={styles.mainText} onPress={() => { this.props.navigation.navigate("Recommend") }} >ร้านอาหารยอดนิยม {'>'}</Text>
                     <ScrollView showsVerticalScrollIndicator={false} horizontal={true}>
-                        {this.state.restaurant_list.map((item, i) => {
+                        {this.state.Reccomend_list.map((item, i) => {
                             return (
                                 <TouchableOpacity style={{ marginLeft: 10, marginRight: 10 }} key={i} onPress={() => this.navigateToViewDetaile(item.key)}>
                                     <View style={styles.card}>
@@ -85,7 +101,7 @@ class MainScreen extends Component {
                     </ScrollView>
                     <Text style={styles.mainText} onPress={() => { this.props.navigation.navigate("Interest") }} >ร้านอาหารเก่า {'>'} </Text>
                     <ScrollView showsVerticalScrollIndicator={false} horizontal={true}>
-                        {this.state.restaurant_list.map((item, i) => {
+                        {this.state.Interest_list.map((item, i) => {
                             return (
                                 <TouchableOpacity style={{ marginLeft: 10, marginRight: 10 }} key={i} onPress={() => this.navigateToViewDetaile(item.key)}>
                                     <View style={styles.card}>
@@ -107,7 +123,7 @@ class MainScreen extends Component {
                     </ScrollView>
                     <Text style={styles.mainText} onPress={() => { this.props.navigation.navigate("New") }}>ร้านอาหารใหม่ {'>'} </Text>
                     <ScrollView showsVerticalScrollIndicator={false} horizontal={true}>
-                        {this.state.restaurant_list.map((item, i) => {
+                        {this.state.New_list.map((item, i) => {
                             return (
                                 <TouchableOpacity style={{ marginLeft: 10, marginRight: 10 }} key={i} onPress={() => this.navigateToViewDetaile(item.key)}>
                                     <View style={styles.card}>
